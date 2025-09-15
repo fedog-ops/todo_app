@@ -1,27 +1,33 @@
 # Go To-Do App
 
-A fully-featured To-Do application built in Go, designed to evolve from a simple command-line tool to a multi-user web application with persistent data storage.
+## 🚀 Phase 1: CLI + In-Memory
 
-## Features
+- A command-line interface that works with an in-memory data store.
+- **Focus:** Core features and data models.
 
-- **Command-Line Interface**: Manage your To-Do list directly from the terminal.
-- **REST API**: Interact with the To-Do list through a RESTful API for easy integration and automation.
-- **Web Interface**: A simple web app for users to manage their tasks through a browser.
-- **Multi-User Support**: Each user can maintain their own To-Do list, with concurrent access and data isolation.
-- **Persistent Data Storage**: Initially backed by JSON files, with a final integration of PostgreSQL for scalable, production-grade data storage.
+---
 
-## Key Technologies
+## 🌐 Phase 2: REST API + JSON Persistence
 
-- **Go Standard Library**: Leveraging Go’s powerful standard library for efficiency and reliability.
-- **PostgreSQL**: Used for persistent data storage in the final version.
-- **UUIDs**: For unique task identifiers.
-- **Concurrent Safety**: Ensured using Go’s goroutines and channels for safe multi-user interaction.
-- **Traceability**: Implemented with the `context` and `slog` packages for better observability.
+- Wrap your data store with a RESTful API (**V1**).
+- Add JSON-based file persistence.
+- Implement context-aware tracing and logging with `context` and `slog`.
+- Use Go’s concurrency primitives (`goroutines`, `channels`) to safely support concurrent reads/writes.
+- Update the CLI to consume your new API.
 
+---
 
-[github.com/google/uuid]: https://pkg.go.dev/github.com/google/uuid
-[github.com/google/go-cmp/cmp]: https://pkg.go.dev/github.com/google/go-cmp/cmp
-[github.com/lib/pg]: https://pkg.go.dev/github.com/lib/pq 
-[context]: https://pkg.go.dev/context
+## 👥 Phase 3: Multi-User Support
 
-[slog]: https://pkg.go.dev/log/slog
+- Introduce a **V2 API** that supports multiple users.
+- Add a basic **web frontend** for managing tasks.
+- Update the CLI to handle multiple users too.
+- Validate concurrency safety across users using **parallel tests**.
+
+---
+
+## 🗄️ Phase 4: PostgreSQL Integration
+
+- Add support for **PostgreSQL** as a backend data store.
+- Plug it in as an alternative to the JSON file store.
+``
